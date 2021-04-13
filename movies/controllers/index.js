@@ -4,9 +4,10 @@ const { APICalls } = require("../models")
 class Controller {
     static async searchMovies(req, res, next) {
         try {
+            console.log(process.env.APIKEY, '>>>>>>>>>>')
             const searchKeywords = req.params.keywords
             const page = req.params.page || 1
-            const searchResults = await movies.get(`/?apikey=faf7e5bb&s=${searchKeywords}&page=${page}`)
+            const searchResults = await movies.get(`/?apikey=${process.env.APIKEY}&s=${searchKeywords}&page=${page}`)
             await APICalls.create({
                 endpoint: "/search",
                 parameters: searchKeywords
@@ -23,7 +24,7 @@ class Controller {
     static async movieDetails(req, res, next) {
         try {
             const title = req.params.title
-            const response = await movies.get(`/?apikey=faf7e5bb&t=${title}`)
+            const response = await movies.get(`/?apikey=${process.env.APIKEY}&t=${title}`)
             await APICalls.create({
                 endpoint: "/details",
                 parameters: title

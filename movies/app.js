@@ -14,7 +14,14 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(router)
 app.use("/", (req, res) => {
-    res.status(200).json({message: "movie app"})
+    res.status(200).json({
+        message: "movie app",
+        routes: {
+            search: "/search/:keywords(string)/:page(integer)",
+            detail: "/search/:title(string)"
+        },
+        notes: "separate words using '+' in keywords and title value"
+    })
 })
 
 app.use(errorHandler)
