@@ -64,7 +64,7 @@ Params:
     { "title": <string> }
     *notes: separate words with "+" in title value
 
-- 201
+- 200
     ```
     {
         "endpoint: <string>,
